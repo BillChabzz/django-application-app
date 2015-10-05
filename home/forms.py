@@ -3,7 +3,7 @@ from .models import Student
 
 class StudentForm(forms.ModelForm):
     class Meta:
-        #fields = ['full_name', 'email', 'age']
+        fields = ['full_name', 'email', 'age']
         exclude = ['last_update']
         model = Student
 
