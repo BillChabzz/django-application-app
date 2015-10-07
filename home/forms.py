@@ -12,3 +12,14 @@ class StudentForm(forms.ModelForm):
         if age > 120:
             raise forms.ValidationError("You may be too old for this class")
         return age
+
+class FeedbackForm(forms.Form):
+    full_name = forms.CharField()
+    email = forms.EmailField()
+    message = forms.CharField()
+
+    def clean_message(self):
+        message = self.cleaned_data.get('message')
+        if message == "Dirty":
+            message == "Clean"
+        return message
