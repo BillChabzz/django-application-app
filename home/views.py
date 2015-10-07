@@ -25,7 +25,10 @@ def index(request):
     
 def feedback(request):
 
-    form = FeedbackForm()
+    form = FeedbackForm(request.POST or None)
+    if form.is_valid():
+        send_mail('Subject here', 'Here is the message.', 'from@example.com',
+    ['to@example.com'], fail_silently=False)
     context = {
         "form": form
     }
