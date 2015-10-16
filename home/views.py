@@ -6,6 +6,10 @@ from .models import Student
 from django.core.mail import send_mail
 # Create your views here.
 def index(request):
+        return render(request, "home.html", [])
+
+
+def register(request):
     form = StudentForm(request.POST or None)
     context = {
         "hello_message": "Register new student",
