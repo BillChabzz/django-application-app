@@ -18,6 +18,7 @@
     <![endif]-->
   </head>
     <body>
+        <p>Welcome {{request.user}}</p>
         {% for student in students %}
             {{student.full_name}}
         {% endfor %}

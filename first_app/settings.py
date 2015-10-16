@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_HOST = 'smtp.mandrillapp.com'
+EMAIL_HOST_USER = 'bmnenz@gmail.com'
+EMAIL_HOST_PASSWORD = 'OjjOrRCt5HLJtqfrbrGpng'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 
 # Application definition
 
@@ -112,3 +118,6 @@ STATICFILES_DIRS = (
 
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = '/students'
+
+SITE_ID=1

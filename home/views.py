@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .forms import FeedbackForm
 from .forms import StudentForm
 from .models import Student
+from django.core.mail import send_mail
 # Create your views here.
 def index(request):
     form = StudentForm(request.POST or None)
@@ -28,8 +29,12 @@ def feedback(request):
 
     form = FeedbackForm(request.POST or None)
     if form.is_valid():
-        send_mail('Subject here', 'Here is the message.', 'from@example.com',
-    ['to@example.com'], fail_silently=False)
+        from_email = form.cleaned_data.get('email')
+        full_name = form.cleaned_data.get('full_name')
+        message= form.cleaned_data.get('message')
+        prepared_message = "you have feedback from {} saying '{}'".format(full_name,message)
+        send_mail('New feedback given', prepared_message,from_email ,
+    ['bmnenz@gmail.com'], fail_silently=False)
     context = {
         "form": form
     }
